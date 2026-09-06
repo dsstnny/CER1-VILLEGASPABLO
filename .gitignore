@@ -1,0 +1,27 @@
+# Sistema operativo
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# Editores
+.vscode/
+.idea/
+*.swp
+
+# Entornos y dependencias
+node_modules/
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+env/
+
+# Compilados
+*.exe
+*.o
+*.obj
+*.class
+
+# Secretos
+.env
+.env.local
