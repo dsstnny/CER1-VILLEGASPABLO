@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Cartelera de talleres, conciertos, obras de teatro y conversatorios del Centro Cultural Puerto Abierto.">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <title>Cartelera de Actividades | Centro Cultural Puerto Abierto</title>
+</head>
+
+<body>
+
+    <!-- ==================================================================
+         ENCABEZADO Y NAVEGACION
+         Identico al de index.html, para mantener la navegacion consistente
+         en todo el sitio. Lo unico que cambia es cual enlace lleva la clase
+         "active": aca es Cartelera.
+         ================================================================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-puerto" data-bs-theme="dark">
+            <div class="container">
+
+                <a class="navbar-brand" href="index.html">Centro Cultural Puerto Abierto</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                    aria-expanded="false" aria-label="Abrir o cerrar el menu de navegacion">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="cartelera.html">Cartelera</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inscripcion.html">Inscripcion</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- ==============================================================
+             ENCABEZADO DE LA PAGINA
+             Franja de color con el titulo. bg-puerto es una clase mia.
+             ============================================================== -->
+        <section class="bg-puerto text-white py-5">
+            <div class="container">
+                <h1 class="text-white mb-2">Cartelera de actividades</h1>
+                <p class="lead mb-0">
+                    Programacion de septiembre y octubre de 2026. Todas las
+                    actividades requieren inscripcion previa.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ==============================================================
+             GALERIA DE ACTIVIDADES
+             ==============================================================
+             ESTRUCTURA DE LA GRILLA (lo que pide el enunciado):
+
+             .container  -> caja centrada con ancho maximo segun el breakpoint
+               .row      -> fila. Crea el contexto flex y los "gutters"
+                 .col    -> columna. Cada tarjeta va dentro de una.
+
+             Clases responsivas de la fila:
+               row-cols-1        -> 1 columna  (celular,  < 768px)
+               row-cols-md-2     -> 2 columnas (tablet,  >= 768px)
+               row-cols-lg-3     -> 3 columnas (escritorio, >= 992px)
+               g-4               -> separacion entre tarjetas
+
+             Asi la distribucion se adapta sola al tamano de pantalla, sin que
+             yo tenga que escribir media queries para esto.
+             ============================================================== -->
+        <section class="seccion">
+            <div class="container">
+
+                <h2 class="titulo-seccion">9 actividades disponibles</h2>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+
+                    <!-- ===================== ACTIVIDAD 1 ===================== -->
+                    <div class="col">
+                        <!-- Uso <article> en vez de <div> porque cada tarjeta es
+                             una pieza de contenido independiente y con sentido
+                             propio: se entiende igual fuera de la lista.
+                             h-100 -> todas las tarjetas de la fila miden lo mismo. -->
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Publico con las manos en alto frente a un escenario lleno de luces de colores">
+                            <div class="card-body">
+                                <!-- CATEGORIA: componente badge de Bootstrap con
+                                     mi color de acento (.badge-categoria) -->
+                                <span class="badge badge-categoria mb-2">Musica</span>
+                                <!-- NOMBRE: h3 porque depende del h2 de la seccion.
+                                     La clase h5 le da el TAMANO de un h5 sin
+                                     romper la jerarquia semantica. -->
+                                <h3 class="card-title h5">Ciclo de Musica en Vivo</h3>
+                                <!-- FECHA -->
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-09-25">Viernes 25 de septiembre &middot; 20:00 h</time>
+                                </p>
+                                <!-- DESCRIPCION BREVE -->
+                                <p class="card-text">
+                                    Cuatro bandas emergentes del puerto se presentan en el
+                                    patio central. Entrada liberada hasta completar aforo.
+                                </p>
+                            </div>
+                            <!-- card-footer: pie de la tarjeta, separado del cuerpo -->
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 2 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Siluetas de tres actores recortadas sobre un telon rojo iluminado">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Teatro</span>
+                                <h3 class="card-title h5">Temporada de Teatro: Voces del Puerto</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-09-26">Sabado 26 de septiembre &middot; 19:30 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Obra de creacion colectiva sobre la memoria de los
+                                    antiguos oficios portuarios de Valparaiso.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 3 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Pinceles usados con restos de pintura azul, roja y violeta">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Artes Visuales</span>
+                                <h3 class="card-title h5">Taller de Pintura Experimental</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-09-30">Miercoles 30 de septiembre &middot; 18:00 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Seis sesiones para explorar texturas, materiales
+                                    reciclados y color. No se requiere experiencia previa.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 4 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Mural callejero con el rostro de una persona pintado en colores">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Artes Visuales</span>
+                                <h3 class="card-title h5">Taller de Muralismo Urbano</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-10-03">Sabado 3 de octubre &middot; 11:00 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Cuatro sesiones practicas que terminan interviniendo
+                                    un muro del barrio junto a muralistas locales.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 5 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Camara fotografica y dos objetivos apoyados sobre una mesa oscura">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Fotografia</span>
+                                <h3 class="card-title h5">Taller de Fotografia Documental</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-10-06">Martes 6 de octubre &middot; 19:00 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Registro fotografico del barrio: encuadre, luz natural
+                                    y edicion basica. Se trabaja con camara o celular.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 6 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Estanterias de una biblioteca llenas de libros antiguos">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Literatura</span>
+                                <h3 class="card-title h5">Club de Lectura Puerto Abierto</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-10-08">Jueves 8 de octubre &middot; 18:30 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Encuentro mensual de lectura y conversacion. Este ciclo
+                                    esta dedicado a narrativa chilena contemporanea.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 7 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Mesa de trabajo con cintas, tijeras y herramientas de corte">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Oficios</span>
+                                <h3 class="card-title h5">Taller de Encuadernacion Artesanal</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-10-10">Sabado 10 de octubre &middot; 10:30 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Construccion de una libreta cosida a mano. Los materiales
+                                    estan incluidos en la inscripcion.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 8 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Personas sentadas escuchando una charla frente a una pantalla de proyeccion">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Charlas</span>
+                                <h3 class="card-title h5">Conversatorio: Memoria del Barrio Puerto</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-10-16">Viernes 16 de octubre &middot; 19:00 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Vecinas, historiadores y ex trabajadores portuarios
+                                    conversan sobre la transformacion del barrio.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                    <!-- ===================== ACTIVIDAD 9 ===================== -->
+                    <div class="col">
+                        <article class="card card-actividad h-100 shadow-sm">
+                            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=600&h=400&fit=crop"
+                                class="card-img-top"
+                                alt="Dos pinceles con pintura roja sobre un lienzo de colores calidos">
+                            <div class="card-body">
+                                <span class="badge badge-categoria mb-2">Infantil</span>
+                                <h3 class="card-title h5">Taller de Pintura para Ninas y Ninos</h3>
+                                <p class="fecha-actividad mb-2">
+                                    <time datetime="2026-10-25">Domingo 25 de octubre &middot; 11:00 h</time>
+                                </p>
+                                <p class="card-text">
+                                    Actividad familiar para participantes de 5 a 11 anos.
+                                    Cada nino o nina debe asistir con un adulto responsable.
+                                </p>
+                            </div>
+                            <div class="card-footer bg-white border-0 pb-3">
+                                <a href="inscripcion.html" class="btn btn-puerto btn-sm">Inscribirme</a>
+                            </div>
+                        </article>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+        <!-- ==============================================================
+             LLAMADA A LA ACCION HACIA EL FORMULARIO
+             ============================================================== -->
+        <section class="franja-cta py-5">
+            <div class="container">
+                <div class="row align-items-center g-3">
+                    <div class="col-12 col-md-8">
+                        <h2 class="h3 mb-1">Reserva tu cupo</h2>
+                        <p class="mb-0">Los cupos son limitados y se asignan por orden de inscripcion.</p>
+                    </div>
+                    <div class="col-12 col-md-4 text-md-end">
+                        <a href="inscripcion.html" class="btn btn-puerto">Ir al formulario</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================================
+         PIE DE PAGINA (identico en las tres paginas)
+         ================================================================== -->
+    <footer class="pie-pagina py-4">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6">
+                    <h2 class="h6">Centro Cultural Puerto Abierto</h2>
+                    <p class="mb-0">
+                        Calle Serrano 145, Barrio Puerto, Valparaiso.<br>
+                        <a href="mailto:contacto@puertoabierto.cl">contacto@puertoabierto.cl</a>
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 text-md-end">
+                    <h3 class="h6">Navegacion</h3>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="cartelera.html">Cartelera</a></li>
+                        <li><a href="inscripcion.html">Inscripcion</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-light opacity-25 my-3">
+
+            <p class="mb-0 text-center small">
+                Sitio desarrollado por Pablo Villegas &mdash; Certamen 1, EIN082B Taller de Lenguaje de Programacion.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>

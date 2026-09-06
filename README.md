@@ -1,20 +1,103 @@
-# CER 1 — Taller de Programación
+# CER1 — Centro Cultural Puerto Abierto
 
-Repositorio de trabajo para el taller de programación.
+Certamen N°1 — Front End
+**EIN082B Taller de Lenguaje de Programación** — Ingeniería en Informática
+Estudiante: Pablo Villegas
+Profesora: Pamela Gatica Caballero
 
-## Trabajar desde otra máquina
+Sitio web del **Centro Cultural Puerto Abierto**, una organización ficticia ubicada
+en el Barrio Puerto de Valparaíso. El sitio difunde la programación de actividades
+y permite inscribirse en ellas.
 
-```bash
-git clone https://github.com/dsstnny/cer-1-taller-de-programacion.git
-cd cer-1-taller-de-programacion
+## Cómo ver el sitio
+
+Abrir `index.html` directamente en el navegador. No requiere servidor ni
+instalación: es un sitio estático de HTML, CSS y Bootstrap.
+
+## Estructura del proyecto
+
+```
+CER1-VILLEGASPABLO/
+├── index.html          Página principal
+├── cartelera.html      Cartelera de actividades (9 actividades)
+├── inscripcion.html    Formulario de inscripción
+├── css/
+│   ├── bootstrap.css   Framework CSS (Bootstrap 5.3.8, sin modificar)
+│   └── estilos.css     Hoja de estilos propia
+└── js/
+    └── bootstrap.bundle.min.js   JavaScript de Bootstrap (menú colapsable)
 ```
 
-## Flujo básico
+## Tecnologías
 
-```bash
-git pull            # traer los últimos cambios antes de empezar
-# ... editar archivos ...
-git add .
-git commit -m "descripción del cambio"
-git push
-```
+| Tecnología | Uso |
+|---|---|
+| HTML5 | Estructura y contenido, con elementos semánticos |
+| Bootstrap 5.3.8 | Framework CSS: grilla, navbar, cards, badges, formularios |
+| CSS propio | Identidad visual, paleta de colores y ajustes responsivos |
+
+Bootstrap se carga desde archivos **locales** y no desde un CDN, para que el
+sitio funcione completo aunque no haya conexión a internet.
+
+## Páginas
+
+### 1. `index.html` — Página principal
+- Identificación del centro cultural en la barra de navegación y el pie de página.
+- Sección de bienvenida destacada con imagen de fondo y llamada a la acción.
+- Descripción de la organización ("Quiénes somos").
+- Selección de 3 actividades destacadas.
+- Segunda llamada a la acción hacia la cartelera.
+- Información de contacto y ubicación, con horarios en una tabla.
+
+### 2. `cartelera.html` — Cartelera de actividades
+- 9 actividades presentadas con el sistema de grilla de Bootstrap.
+- Cada actividad incluye imagen, nombre, categoría, fecha y descripción breve.
+- Distribución responsiva: 1 columna en celular, 2 en tablet, 3 en escritorio.
+
+### 3. `inscripcion.html` — Inscripción
+Formulario con los controles apropiados para cada tipo de dato:
+
+| Campo | Control | Obligatorio |
+|---|---|---|
+| Nombre completo | `input type="text"` | Sí |
+| Correo electrónico | `input type="email"` | Sí |
+| Teléfono | `input type="tel"` con `pattern` | Sí |
+| Actividad de interés | `select` con `optgroup` | Sí |
+| Edad | `input type="number"` con `min`/`max` | Sí |
+| Comentarios adicionales | `textarea` | No |
+| Aceptación de condiciones | `input type="checkbox"` | Sí |
+
+La obligatoriedad se implementa con el atributo `required` de HTML, sin JavaScript.
+
+## Paleta de colores
+
+Definida como variables CSS en `:root` dentro de `css/estilos.css`:
+
+| Variable | Color | Uso |
+|---|---|---|
+| `--azul-puerto` | `#10333f` | Barra de navegación, pie de página, títulos |
+| `--azul-medio` | `#1d6076` | Enlaces y detalles |
+| `--terracota` | `#c25a3c` | Botones y llamadas a la acción |
+| `--arena` | `#f5f0e8` | Fondo general |
+
+## Responsividad
+
+- `<meta name="viewport">` en las tres páginas.
+- Grilla de Bootstrap con clases por breakpoint (`col-md-*`, `row-cols-lg-3`).
+- Menú de navegación colapsable (`navbar-expand-lg`) bajo los 992 px.
+- Imágenes con `img-fluid` y `object-fit: cover` para que no se deformen.
+- Media queries propias en `estilos.css` para ajustar espaciados en pantallas
+  menores a 768 px y 576 px.
+
+## Accesibilidad
+
+- `lang="es"` en el elemento `<html>`.
+- Todas las imágenes tienen atributo `alt` descriptivo.
+- Cada control del formulario tiene su `<label>` asociado por `for`/`id`.
+- Atributos ARIA en el menú (`aria-current`, `aria-expanded`, `aria-label`) y en
+  los textos de ayuda del formulario (`aria-describedby`).
+- Jerarquía de encabezados sin saltos: un solo `<h1>` por página, luego `<h2>` y `<h3>`.
+
+## Créditos de imágenes
+
+Fotografías de [Unsplash](https://unsplash.com), de uso libre.

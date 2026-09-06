@@ -1,0 +1,411 @@
+/* ==========================================================================
+   Centro Cultural Puerto Abierto - Hoja de estilos propia
+   --------------------------------------------------------------------------
+   Este archivo se carga DESPUES de bootstrap.css en todas las paginas.
+   Por eso sus reglas pueden sobrescribir a las de Bootstrap: cuando dos
+   reglas tienen la misma especificidad, gana la que se declara al final.
+   ========================================================================== */
+
+
+/* --------------------------------------------------------------------------
+   1. VARIABLES DE COLOR Y TIPOGRAFIA
+   --------------------------------------------------------------------------
+   Las variables CSS (custom properties) se declaran en :root, que representa
+   al elemento <html>. Al estar en la raiz quedan disponibles para todo el
+   documento y se usan con var(--nombre).
+   Ventaja: si quiero cambiar la identidad visual del sitio completo, edito
+   estos valores en un solo lugar y no regla por regla.
+   -------------------------------------------------------------------------- */
+:root {
+    /* Paleta: tonos de puerto/mar (azules profundos) + un acento calido */
+    --azul-puerto: #10333f;   /* color principal: navbar, footer, titulos */
+    --azul-medio: #1d6076;    /* color secundario: enlaces, detalles */
+    --terracota: #c25a3c;     /* color de acento: botones y llamadas a la accion */
+    --terracota-oscuro: #a44729;
+    --arena: #f5f0e8;         /* fondo general, evita el blanco puro */
+    --gris-texto: #33393d;    /* color de texto, mas suave que el negro puro */
+
+    /* Tipografia: se define una vez y se hereda al resto del sitio */
+    --fuente-titulos: Georgia, "Times New Roman", serif;
+    --fuente-texto: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. ESTILOS GENERALES DEL DOCUMENTO
+   -------------------------------------------------------------------------- */
+
+body {
+    font-family: var(--fuente-texto);
+    color: var(--gris-texto);
+    background-color: var(--arena);
+    /* line-height sin unidad: se multiplica por el tamano de fuente de cada
+       elemento. Mejora la legibilidad de los parrafos largos. */
+    line-height: 1.7;
+}
+
+/* Los titulos usan la fuente serif para dar caracter "cultural" y para
+   diferenciarse del texto corrido. */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--fuente-titulos);
+    color: var(--azul-puerto);
+    font-weight: 700;
+}
+
+/* Enlaces del contenido (los de la navbar se estilizan aparte) */
+a {
+    color: var(--azul-medio);
+}
+
+a:hover {
+    color: var(--azul-puerto);
+}
+
+/* Clase propia para separar de forma pareja todas las secciones del sitio.
+   La uso en lugar de repetir padding en cada seccion, asi el espaciado
+   vertical queda consistente en las tres paginas. */
+.seccion {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+/* Linea decorativa bajo los titulos de seccion.
+   ::after crea un pseudo-elemento: un elemento que no existe en el HTML pero
+   que el CSS dibuja. Sirve para adornos como este, que no son contenido. */
+.titulo-seccion {
+    margin-bottom: 2rem;
+}
+
+.titulo-seccion::after {
+    content: "";               /* obligatorio para que el pseudo-elemento exista */
+    display: block;
+    width: 70px;
+    height: 4px;
+    margin-top: 0.75rem;
+    background-color: var(--terracota);
+}
+
+/* Utilidades de color propias, nombradas con el mismo criterio que usa
+   Bootstrap (bg-*, text-*) para que el codigo se lea parejo. */
+.bg-puerto {
+    background-color: var(--azul-puerto);
+}
+
+.bg-arena {
+    background-color: var(--arena);
+}
+
+.text-puerto {
+    color: var(--azul-puerto);
+}
+
+
+/* --------------------------------------------------------------------------
+   3. BARRA DE NAVEGACION
+   --------------------------------------------------------------------------
+   El componente navbar lo aporta Bootstrap (navbar navbar-expand-lg).
+   Aca solo personalizo colores y el estado activo.
+   -------------------------------------------------------------------------- */
+
+.navbar-puerto {
+    background-color: var(--azul-puerto);
+}
+
+/* El nombre del centro cultural dentro de la navbar */
+.navbar-puerto .navbar-brand {
+    font-family: var(--fuente-titulos);
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.navbar-puerto .nav-link {
+    /* transition anima el cambio de color al pasar el mouse en 0.2 segundos,
+       en vez de que el cambio sea brusco */
+    transition: color 0.2s;
+}
+
+/* La pagina en la que estoy parado se marca con el color de acento.
+   La clase .active la pone Bootstrap; aca solo le doy mi propio color.
+   Uso !important porque la regla de color de Bootstrap para .nav-link es
+   mas especifica que esta y de otro modo ganaria ella. */
+.navbar-puerto .nav-link.active {
+    color: var(--terracota) !important;
+    font-weight: 600;
+}
+
+/* Foco visible al navegar con la tecla Tab (accesibilidad):
+   quien no usa mouse necesita ver donde esta parado. */
+.navbar-puerto .nav-link:focus-visible {
+    outline: 2px solid var(--terracota);
+    outline-offset: 3px;
+}
+
+
+/* --------------------------------------------------------------------------
+   4. PORTADA / SECCION DE BIENVENIDA (solo en index.html)
+   -------------------------------------------------------------------------- */
+
+.portada {
+    /* Dos capas de fondo separadas por coma: la primera (el degradado) se
+       dibuja ENCIMA de la segunda (la foto). El degradado oscurece la imagen
+       para que el texto blanco tenga contraste suficiente y se pueda leer. */
+    background-image:
+        linear-gradient(rgba(16, 51, 63, 0.78), rgba(16, 51, 63, 0.78)),
+        url("https://images.unsplash.com/photo-1499364615650-ec38552f4f34?w=1600&h=900&fit=crop");
+    background-size: cover;      /* la imagen cubre todo el area sin deformarse */
+    background-position: center;
+    color: #ffffff;
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+}
+
+/* Los titulos heredan el color azul de la regla general h1..h6, asi que
+   dentro de la portada hay que devolverlos a blanco. */
+.portada h1 {
+    color: #ffffff;
+}
+
+.portada .lead {
+    /* max-width en "ch" limita el ancho a unos 60 caracteres. Las lineas de
+       texto muy largas cansan la vista y cuestan de seguir. */
+    max-width: 60ch;
+}
+
+
+/* --------------------------------------------------------------------------
+   5. TARJETAS DE ACTIVIDADES
+   --------------------------------------------------------------------------
+   La estructura .card la aporta Bootstrap. Aca agrego el comportamiento
+   visual propio: elevacion al pasar el mouse e imagenes de altura pareja.
+   -------------------------------------------------------------------------- */
+
+.card-actividad {
+    border: none;
+    border-radius: 0.5rem;
+    overflow: hidden;                 /* recorta la imagen a las esquinas redondeadas */
+    transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.card-actividad:hover {
+    transform: translateY(-6px);      /* la tarjeta "sube" 6px */
+    box-shadow: 0 12px 24px rgba(16, 51, 63, 0.18);
+}
+
+/* PROBLEMA QUE RESUELVE ESTA REGLA:
+   las fotos vienen con proporciones distintas, asi que las tarjetas quedaban
+   de alturas desparejas dentro de la misma fila.
+   Solucion: fijo la altura y uso object-fit: cover, que recorta el sobrante
+   en lugar de deformar la imagen (que es lo que pasaria fijando solo el alto). */
+.card-actividad img {
+    height: 210px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* La categoria de cada actividad usa el componente badge de Bootstrap,
+   pero con el color de acento del sitio. */
+.badge-categoria {
+    background-color: var(--terracota);
+    color: #ffffff;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+
+/* Fecha de la actividad: texto chico y en mayusculas para diferenciarlo
+   de la descripcion */
+.fecha-actividad {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--azul-medio);
+    font-weight: 600;
+}
+
+
+/* --------------------------------------------------------------------------
+   6. BOTONES
+   --------------------------------------------------------------------------
+   Bootstrap trae .btn con todo el comportamiento (padding, bordes, foco).
+   Creo una variante propia .btn-puerto siguiendo su misma convencion de
+   nombres, para no perder ese comportamiento y solo cambiar el color.
+   -------------------------------------------------------------------------- */
+
+.btn-puerto {
+    background-color: var(--terracota);
+    border-color: var(--terracota);
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.6rem 1.75rem;
+}
+
+.btn-puerto:hover,
+.btn-puerto:focus {
+    background-color: var(--terracota-oscuro);
+    border-color: var(--terracota-oscuro);
+    color: #ffffff;
+}
+
+/* Variante de contorno, para usar sobre fondos oscuros (la portada) */
+.btn-puerto-outline {
+    background-color: transparent;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    font-weight: 600;
+    padding: 0.6rem 1.75rem;
+}
+
+.btn-puerto-outline:hover,
+.btn-puerto-outline:focus {
+    background-color: #ffffff;
+    color: var(--azul-puerto);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. FRANJA DE LLAMADA A LA ACCION
+   -------------------------------------------------------------------------- */
+
+.franja-cta {
+    background-color: var(--azul-medio);
+    color: #ffffff;
+}
+
+.franja-cta h2 {
+    color: #ffffff;
+}
+
+
+/* --------------------------------------------------------------------------
+   8. FORMULARIO DE INSCRIPCION
+   -------------------------------------------------------------------------- */
+
+.caja-formulario {
+    background-color: #ffffff;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 18px rgba(16, 51, 63, 0.10);
+    padding: 2.5rem;
+}
+
+/* Agrupacion de campos con fieldset. Le saco el borde por defecto del
+   navegador porque el diseno ya separa los grupos con espaciado. */
+.caja-formulario fieldset {
+    border: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.caja-formulario legend {
+    font-family: var(--fuente-titulos);
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--azul-puerto);
+    border-bottom: 2px solid var(--terracota);
+    padding-bottom: 0.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.caja-formulario .form-label {
+    font-weight: 600;
+    color: var(--azul-puerto);
+}
+
+/* Color del borde y del halo cuando el campo esta enfocado.
+   Sin esto Bootstrap usaria su azul por defecto, que no combina con la paleta. */
+.caja-formulario .form-control:focus,
+.caja-formulario .form-select:focus {
+    border-color: var(--azul-medio);
+    box-shadow: 0 0 0 0.2rem rgba(29, 96, 118, 0.20);
+}
+
+/* Marca visual de campo obligatorio: un asterisco despues de la etiqueta.
+   El atributo required del HTML es lo que realmente valida; esto es solo
+   la pista visual para la persona que completa el formulario. */
+.obligatorio::after {
+    content: " *";
+    color: var(--terracota);
+}
+
+
+/* --------------------------------------------------------------------------
+   9. PIE DE PAGINA
+   -------------------------------------------------------------------------- */
+
+.pie-pagina {
+    background-color: var(--azul-puerto);
+    color: #d7e2e6;
+}
+
+.pie-pagina h2,
+.pie-pagina h3 {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.pie-pagina a {
+    color: #d7e2e6;
+    text-decoration: none;
+}
+
+.pie-pagina a:hover {
+    color: var(--terracota);
+    text-decoration: underline;
+}
+
+
+/* --------------------------------------------------------------------------
+   10. AJUSTES RESPONSIVOS PROPIOS
+   --------------------------------------------------------------------------
+   Bootstrap ya resuelve la mayor parte de la responsividad con su grilla y
+   sus breakpoints. Estas media queries son ajustes puntuales MIOS, para los
+   elementos que estilice yo y que la grilla no cubre.
+
+   Uso max-width porque estoy corrigiendo hacia abajo: parto del diseno de
+   escritorio y achico valores para pantallas mas chicas.
+   -------------------------------------------------------------------------- */
+
+/* Hasta 768px de ancho (tablets y celulares) */
+@media (max-width: 768px) {
+
+    /* En el celular la portada ocupaba demasiado alto y obligaba a hacer
+       scroll para llegar al contenido. Reduzco el espaciado vertical. */
+    .portada {
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
+        text-align: center;
+    }
+
+    /* Con el texto centrado, la caja limitada a 60ch debe centrarse tambien */
+    .portada .lead {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    /* Menos aire entre secciones para no alargar tanto la pagina */
+    .seccion {
+        padding-top: 2.5rem;
+        padding-bottom: 2.5rem;
+    }
+
+    /* La caja del formulario tenia mucho padding y dejaba los campos muy
+       angostos en pantallas chicas */
+    .caja-formulario {
+        padding: 1.5rem;
+    }
+}
+
+/* Hasta 576px (celulares) */
+@media (max-width: 576px) {
+
+    /* El efecto de elevacion al pasar el mouse no aporta en pantallas
+       tactiles, donde no existe el estado hover. Lo desactivo. */
+    .card-actividad:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    /* Imagenes de tarjeta un poco mas bajas: en una sola columna la foto
+       ocupaba demasiado espacio antes de mostrar el texto. */
+    .card-actividad img {
+        height: 180px;
+    }
+}

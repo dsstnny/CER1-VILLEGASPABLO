@@ -25,3 +25,6 @@ env/
 # Secretos
 .env
 .env.local
+
+# Configuracion local del editor / preview
+.claude/

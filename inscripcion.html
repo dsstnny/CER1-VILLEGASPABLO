@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formulario de inscripcion a los talleres y actividades del Centro Cultural Puerto Abierto.">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <title>Inscripcion a Actividades | Centro Cultural Puerto Abierto</title>
+</head>
+
+<body>
+
+    <!-- ==================================================================
+         ENCABEZADO Y NAVEGACION
+         Mismo bloque que en las otras dos paginas. Aca el enlace marcado
+         como "active" es Inscripcion.
+         ================================================================== -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-puerto" data-bs-theme="dark">
+            <div class="container">
+
+                <a class="navbar-brand" href="index.html">Centro Cultural Puerto Abierto</a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
+                    aria-expanded="false" aria-label="Abrir o cerrar el menu de navegacion">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="menuPrincipal">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="index.html">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="cartelera.html">Cartelera</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="inscripcion.html">Inscripcion</a>
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+        </nav>
+    </header>
+
+
+    <main>
+
+        <!-- ==============================================================
+             ENCABEZADO DE LA PAGINA
+             ============================================================== -->
+        <section class="bg-puerto text-white py-5">
+            <div class="container">
+                <h1 class="text-white mb-2">Inscripcion a actividades</h1>
+                <p class="lead mb-0">
+                    Completa el formulario y te contactaremos para confirmar tu cupo.
+                </p>
+            </div>
+        </section>
+
+
+        <!-- ==============================================================
+             FORMULARIO
+             ============================================================== -->
+        <section class="seccion">
+            <div class="container">
+                <div class="row justify-content-center">
+
+                    <!-- La columna se angosta a medida que crece la pantalla:
+                         12/12 en celular, 10/12 en tablet y 8/12 en escritorio.
+                         justify-content-center la deja centrada en la fila.
+                         Un formulario muy ancho es incomodo de completar. -->
+                    <div class="col-12 col-md-10 col-lg-8">
+
+                        <div class="caja-formulario">
+
+                            <!-- SOBRE action Y method:
+                                 este certamen es solo Front End, todavia no hay
+                                 un servidor que reciba los datos. Dejo action="#"
+                                 como marcador. Cuando exista el Back End, aca
+                                 iria la URL que procesa la inscripcion.
+                                 method="post" es lo correcto para un envio que
+                                 crea un registro: manda los datos en el cuerpo
+                                 de la peticion y no en la barra de direcciones. -->
+                            <form action="#" method="post">
+
+                                <!-- ==============================================
+                                     GRUPO 1: DATOS DE LA PERSONA
+                                     <fieldset> agrupa campos relacionados y
+                                     <legend> es el titulo de ese grupo. Los
+                                     lectores de pantalla anuncian la leyenda
+                                     antes de cada campo del grupo.
+                                     ============================================== -->
+                                <fieldset>
+                                    <legend>Datos de la persona</legend>
+
+                                    <!-- NOMBRE COMPLETO -->
+                                    <div class="mb-3">
+                                        <!-- El atributo for del <label> debe coincidir
+                                             EXACTAMENTE con el id del campo. Asi, al
+                                             hacer clic en la etiqueta se activa el
+                                             campo, y el lector de pantalla sabe que
+                                             etiqueta corresponde a que control. -->
+                                        <label for="nombre" class="form-label obligatorio">Nombre completo</label>
+                                        <!-- type="text"  -> texto libre de una linea
+                                             required     -> el navegador NO deja enviar
+                                                             el formulario si esta vacio
+                                             minlength    -> exige al menos 3 caracteres
+                                             autocomplete -> permite al navegador
+                                                             sugerir el dato guardado -->
+                                        <input type="text" class="form-control" id="nombre" name="nombre"
+                                            required minlength="3" maxlength="80"
+                                            autocomplete="name" placeholder="Ej: Camila Rojas Perez">
+                                    </div>
+
+                                    <!-- CORREO Y TELEFONO, lado a lado en pantallas
+                                         medianas y uno debajo del otro en celular -->
+                                    <div class="row">
+
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="correo" class="form-label obligatorio">Correo electronico</label>
+                                            <!-- type="email": el navegador valida solo
+                                                 que el texto tenga forma de correo, y
+                                                 en el celular muestra un teclado con
+                                                 la arroba a mano. -->
+                                            <input type="email" class="form-control" id="correo" name="correo"
+                                                required autocomplete="email"
+                                                placeholder="nombre@correo.cl"
+                                                aria-describedby="ayudaCorreo">
+                                            <!-- aria-describedby enlaza este texto de
+                                                 ayuda con el campo de arriba, para que
+                                                 tambien se lea en voz alta. -->
+                                            <div id="ayudaCorreo" class="form-text">
+                                                Enviaremos la confirmacion del cupo a esta direccion.
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12 col-md-6 mb-3">
+                                            <label for="telefono" class="form-label obligatorio">Telefono</label>
+                                            <!-- type="tel": abre el teclado numerico en
+                                                 el celular. No valida formato por si
+                                                 solo (los telefonos varian por pais),
+                                                 asi que agrego un pattern con una
+                                                 expresion regular:
+                                                 [0-9+ ]{8,15} = entre 8 y 15 caracteres
+                                                 que sean digitos, el signo + o espacios. -->
+                                            <input type="tel" class="form-control" id="telefono" name="telefono"
+                                                required pattern="[0-9+ ]{8,15}"
+                                                autocomplete="tel"
+                                                placeholder="+56 9 1234 5678"
+                                                aria-describedby="ayudaTelefono">
+                                            <div id="ayudaTelefono" class="form-text">
+                                                Entre 8 y 15 digitos. Puedes incluir el codigo del pais.
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <!-- EDAD -->
+                                    <div class="row">
+                                        <div class="col-12 col-md-4 mb-3">
+                                            <label for="edad" class="form-label obligatorio">Edad</label>
+                                            <!-- type="number" con min y max: el navegador
+                                                 rechaza valores fuera del rango y muestra
+                                                 flechitas para subir o bajar el numero.
+                                                 Es el control adecuado porque la edad es
+                                                 un dato numerico, no texto. -->
+                                            <input type="number" class="form-control" id="edad" name="edad"
+                                                required min="5" max="110" step="1"
+                                                placeholder="Ej: 24">
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+
+                                <!-- ==============================================
+                                     GRUPO 2: ACTIVIDAD ELEGIDA
+                                     ============================================== -->
+                                <fieldset>
+                                    <legend>Actividad de interes</legend>
+
+                                    <div class="mb-3">
+                                        <label for="actividad" class="form-label obligatorio">Selecciona una actividad</label>
+                                        <!-- <select> es el control adecuado cuando hay
+                                             que elegir UNA opcion de una lista cerrada
+                                             y conocida. Escribirla a mano en un input
+                                             permitiria errores de tipeo.
+                                             form-select es la clase de Bootstrap para
+                                             darle el estilo del framework. -->
+                                        <select class="form-select" id="actividad" name="actividad" required>
+                                            <!-- Esta primera opcion actua como texto guia.
+                                                 value="" (vacio) + disabled + selected
+                                                 hace que aparezca al abrir la pagina pero
+                                                 que NO cuente como respuesta valida:
+                                                 combinada con required, obliga a elegir
+                                                 alguna de las opciones reales. -->
+                                            <option value="" disabled selected>Elige una actividad de la cartelera</option>
+
+                                            <!-- <optgroup> agrupa las opciones por
+                                                 categoria. Es solo organizacion visual y
+                                                 semantica: el valor que se envia sigue
+                                                 siendo el de la <option>. -->
+                                            <optgroup label="Musica y escena">
+                                                <option value="musica-en-vivo">Ciclo de Musica en Vivo &ndash; 25 de septiembre</option>
+                                                <option value="teatro-voces-del-puerto">Temporada de Teatro: Voces del Puerto &ndash; 26 de septiembre</option>
+                                            </optgroup>
+
+                                            <optgroup label="Artes visuales">
+                                                <option value="pintura-experimental">Taller de Pintura Experimental &ndash; 30 de septiembre</option>
+                                                <option value="muralismo-urbano">Taller de Muralismo Urbano &ndash; 3 de octubre</option>
+                                                <option value="fotografia-documental">Taller de Fotografia Documental &ndash; 6 de octubre</option>
+                                            </optgroup>
+
+                                            <optgroup label="Letras y oficios">
+                                                <option value="club-de-lectura">Club de Lectura Puerto Abierto &ndash; 8 de octubre</option>
+                                                <option value="encuadernacion">Taller de Encuadernacion Artesanal &ndash; 10 de octubre</option>
+                                                <option value="conversatorio-memoria">Conversatorio: Memoria del Barrio Puerto &ndash; 16 de octubre</option>
+                                            </optgroup>
+
+                                            <optgroup label="Infantil">
+                                                <option value="pintura-ninos">Taller de Pintura para Ninas y Ninos &ndash; 25 de octubre</option>
+                                            </optgroup>
+                                        </select>
+                                    </div>
+
+                                    <!-- COMENTARIOS ADICIONALES -->
+                                    <div class="mb-3">
+                                        <!-- Sin la clase .obligatorio y sin required:
+                                             este campo es OPCIONAL segun el enunciado. -->
+                                        <label for="comentarios" class="form-label">Comentarios adicionales</label>
+                                        <!-- <textarea> en lugar de <input type="text">
+                                             porque se espera un texto de varias lineas.
+                                             rows define el alto visible inicial. -->
+                                        <textarea class="form-control" id="comentarios" name="comentarios"
+                                            rows="4" maxlength="500"
+                                            placeholder="Cuentanos si necesitas apoyo de accesibilidad, si asistes con ninos, tu experiencia previa, etc."
+                                            aria-describedby="ayudaComentarios"></textarea>
+                                        <div id="ayudaComentarios" class="form-text">
+                                            Campo opcional. Maximo 500 caracteres.
+                                        </div>
+                                    </div>
+
+                                </fieldset>
+
+
+                                <!-- ==============================================
+                                     GRUPO 3: CONDICIONES DE PARTICIPACION
+                                     ============================================== -->
+                                <fieldset>
+                                    <legend>Condiciones de participacion</legend>
+
+                                    <p class="small">
+                                        Al inscribirte te comprometes a avisar con 24 horas de
+                                        anticipacion si no podras asistir, para que el cupo pueda
+                                        ser reasignado a otra persona. Los talleres con materiales
+                                        incluidos requieren confirmacion previa.
+                                    </p>
+
+                                    <!-- form-check es el patron de Bootstrap para
+                                         casillas y botones de opcion: alinea la casilla
+                                         con su etiqueta. -->
+                                    <div class="form-check mb-3">
+                                        <!-- type="checkbox" es el control adecuado para
+                                             una aceptacion de si/no independiente.
+                                             required en un checkbox suelto obliga a
+                                             marcarlo para poder enviar el formulario. -->
+                                        <input class="form-check-input" type="checkbox"
+                                            id="condiciones" name="condiciones" value="aceptado" required>
+                                        <label class="form-check-label obligatorio" for="condiciones">
+                                            He leido y acepto las condiciones de participacion
+                                        </label>
+                                    </div>
+
+                                </fieldset>
+
+
+                                <!-- ==============================================
+                                     BOTONES DE ENVIO
+                                     ============================================== -->
+                                <!-- d-flex + gap-2 ponen los botones en linea con
+                                     separacion; flex-wrap permite que bajen de linea
+                                     en pantallas muy angostas en vez de desbordarse. -->
+                                <div class="d-flex flex-wrap gap-2">
+                                    <!-- type="submit" dispara la validacion de HTML:
+                                         si falta algun campo required, el navegador
+                                         muestra el mensaje y no envia nada. -->
+                                    <button type="submit" class="btn btn-puerto">Enviar inscripcion</button>
+                                    <!-- type="reset" vacia el formulario. Es un <button>
+                                         y no un <a> porque ejecuta una accion dentro de
+                                         la pagina, no navega a otro lado. -->
+                                    <button type="reset" class="btn btn-outline-secondary">Limpiar formulario</button>
+                                </div>
+
+                                <p class="form-text mt-3 mb-0">
+                                    Los campos marcados con
+                                    <span class="text-danger">*</span>
+                                    son obligatorios.
+                                </p>
+
+                            </form>
+
+                        </div>
+
+                        <!-- <aside> es contenido relacionado pero secundario:
+                             complementa al formulario sin ser parte de el. -->
+                        <aside class="mt-4">
+                            <p class="small mb-0">
+                                Si tienes dudas antes de inscribirte, escribenos a
+                                <a href="mailto:contacto@puertoabierto.cl">contacto@puertoabierto.cl</a>
+                                o llamanos al <a href="tel:+56322456789">+56 32 245 6789</a>.
+                            </p>
+                        </aside>
+
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+
+    <!-- ==================================================================
+         PIE DE PAGINA (identico en las tres paginas)
+         ================================================================== -->
+    <footer class="pie-pagina py-4">
+        <div class="container">
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6">
+                    <h2 class="h6">Centro Cultural Puerto Abierto</h2>
+                    <p class="mb-0">
+                        Calle Serrano 145, Barrio Puerto, Valparaiso.<br>
+                        <a href="mailto:contacto@puertoabierto.cl">contacto@puertoabierto.cl</a>
+                    </p>
+                </div>
+
+                <div class="col-12 col-md-6 text-md-end">
+                    <h3 class="h6">Navegacion</h3>
+                    <ul class="list-unstyled mb-0">
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="cartelera.html">Cartelera</a></li>
+                        <li><a href="inscripcion.html">Inscripcion</a></li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <hr class="border-light opacity-25 my-3">
+
+            <p class="mb-0 text-center small">
+                Sitio desarrollado por Pablo Villegas &mdash; Certamen 1, EIN082B Taller de Lenguaje de Programacion.
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
