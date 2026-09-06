@@ -20,10 +20,20 @@
     /* Paleta: tonos de puerto/mar (azules profundos) + un acento calido */
     --azul-puerto: #10333f;   /* color principal: navbar, footer, titulos */
     --azul-medio: #1d6076;    /* color secundario: enlaces, detalles */
-    --terracota: #c25a3c;     /* color de acento: botones y llamadas a la accion */
-    --terracota-oscuro: #a44729;
     --arena: #f5f0e8;         /* fondo general, evita el blanco puro */
     --gris-texto: #33393d;    /* color de texto, mas suave que el negro puro */
+
+    /* ACENTO EN TRES TONOS, elegidos por CONTRASTE y no solo por gusto.
+       La norma de accesibilidad WCAG exige una relacion de contraste minima
+       de 4.5:1 entre el texto y su fondo para que sea legible.
+       Por eso el mismo acento necesita dos versiones distintas:
+         --terracota       sobre fondo CLARO (texto blanco encima)  -> 5.08:1
+         --terracota-claro sobre fondo OSCURO (la navbar azul)      -> 5.11:1
+       Un solo tono no sirve para ambos casos: el que contrasta bien
+       sobre blanco queda demasiado oscuro sobre el azul de la navbar. */
+    --terracota: #b45034;         /* botones y badges: texto blanco encima */
+    --terracota-oscuro: #9e4426;  /* mismo acento, para el estado hover */
+    --terracota-claro: #e08a6a;   /* acento sobre fondos oscuros (navbar) */
 
     /* Tipografia: se define una vez y se hereda al resto del sitio */
     --fuente-titulos: Georgia, "Times New Roman", serif;
@@ -129,14 +139,15 @@ a:hover {
    Uso !important porque la regla de color de Bootstrap para .nav-link es
    mas especifica que esta y de otro modo ganaria ella. */
 .navbar-puerto .nav-link.active {
-    color: var(--terracota) !important;
+    /* Version clara del acento: va sobre el azul oscuro de la navbar */
+    color: var(--terracota-claro) !important;
     font-weight: 600;
 }
 
 /* Foco visible al navegar con la tecla Tab (accesibilidad):
    quien no usa mouse necesita ver donde esta parado. */
 .navbar-puerto .nav-link:focus-visible {
-    outline: 2px solid var(--terracota);
+    outline: 2px solid var(--terracota-claro);
     outline-offset: 3px;
 }
 
@@ -395,6 +406,18 @@ a:hover {
 
 /* Hasta 576px (celulares) */
 @media (max-width: 576px) {
+
+    /* PROBLEMA QUE RESUELVE ESTA REGLA:
+       en pantallas de 320px (los celulares mas angostos) el nombre
+       "Centro Cultural Puerto Abierto" medía 334px y empujaba la pagina
+       hacia el costado, apareciendo una barra de scroll horizontal.
+       La causa es que Bootstrap le aplica white-space: nowrap a
+       .navbar-brand, asi que el texto no podia cortarse en dos lineas.
+       Solucion: le devuelvo el salto de linea y achico un poco la letra. */
+    .navbar-puerto .navbar-brand {
+        white-space: normal;
+        font-size: 1.05rem;
+    }
 
     /* El efecto de elevacion al pasar el mouse no aporta en pantallas
        tactiles, donde no existe el estado hover. Lo desactivo. */
