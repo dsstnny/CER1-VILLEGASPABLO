@@ -10,16 +10,15 @@
 /* --------------------------------------------------------------------------
    1. VARIABLES DE COLOR Y TIPOGRAFIA
    --------------------------------------------------------------------------
-   Las variables CSS (custom properties) se declaran en :root, que representa
-   al elemento <html>. Al estar en la raiz quedan disponibles para todo el
-   documento y se usan con var(--nombre).
+   Las variables CSS se declaran en :root, que representa al elemento <html>.
+   Al estar en la raiz quedan disponibles para todo el documento y se usan
+   con var(--nombre).
    Ventaja: si quiero cambiar la identidad visual del sitio completo, edito
    estos valores en un solo lugar y no regla por regla.
    -------------------------------------------------------------------------- */
 :root {
-    /* Paleta: tonos de puerto/mar (azules profundos) + un acento calido */
     --azul-puerto: #10333f;   /* color principal: navbar, footer, titulos */
-    --azul-medio: #1d6076;    /* color secundario: enlaces, detalles */
+    --azul-medio: #1d6076;    /* color secundario: enlaces, fechas */
     --arena: #f5f0e8;         /* fondo general, evita el blanco puro */
     --gris-texto: #33393d;    /* color de texto, mas suave que el negro puro */
 
@@ -29,8 +28,8 @@
        Por eso el mismo acento necesita dos versiones distintas:
          --terracota       sobre fondo CLARO (texto blanco encima)  -> 5.08:1
          --terracota-claro sobre fondo OSCURO (la navbar azul)      -> 5.11:1
-       Un solo tono no sirve para ambos casos: el que contrasta bien
-       sobre blanco queda demasiado oscuro sobre el azul de la navbar. */
+       Un solo tono no sirve para ambos casos: el que contrasta bien sobre
+       blanco queda demasiado oscuro sobre el azul de la navbar. */
     --terracota: #b45034;         /* botones y badges: texto blanco encima */
     --terracota-oscuro: #9e4426;  /* mismo acento, para el estado hover */
     --terracota-claro: #e08a6a;   /* acento sobre fondos oscuros (navbar) */
@@ -50,7 +49,7 @@ body {
     color: var(--gris-texto);
     background-color: var(--arena);
     /* line-height sin unidad: se multiplica por el tamano de fuente de cada
-       elemento. Mejora la legibilidad de los parrafos largos. */
+       elemento, asi cada uno recibe un interlineado proporcional al suyo. */
     line-height: 1.7;
 }
 
@@ -79,34 +78,10 @@ a:hover {
     padding-bottom: 4rem;
 }
 
-/* Linea decorativa bajo los titulos de seccion.
-   ::after crea un pseudo-elemento: un elemento que no existe en el HTML pero
-   que el CSS dibuja. Sirve para adornos como este, que no son contenido. */
-.titulo-seccion {
-    margin-bottom: 2rem;
-}
-
-.titulo-seccion::after {
-    content: "";               /* obligatorio para que el pseudo-elemento exista */
-    display: block;
-    width: 70px;
-    height: 4px;
-    margin-top: 0.75rem;
-    background-color: var(--terracota);
-}
-
-/* Utilidades de color propias, nombradas con el mismo criterio que usa
-   Bootstrap (bg-*, text-*) para que el codigo se lea parejo. */
+/* Utilidad de color propia, nombrada con el mismo criterio que usa
+   Bootstrap (bg-*) para que el codigo se lea parejo. */
 .bg-puerto {
     background-color: var(--azul-puerto);
-}
-
-.bg-arena {
-    background-color: var(--arena);
-}
-
-.text-puerto {
-    color: var(--azul-puerto);
 }
 
 
@@ -121,17 +96,9 @@ a:hover {
     background-color: var(--azul-puerto);
 }
 
-/* El nombre del centro cultural dentro de la navbar */
 .navbar-puerto .navbar-brand {
     font-family: var(--fuente-titulos);
     font-weight: 700;
-    letter-spacing: 0.5px;
-}
-
-.navbar-puerto .nav-link {
-    /* transition anima el cambio de color al pasar el mouse en 0.2 segundos,
-       en vez de que el cambio sea brusco */
-    transition: color 0.2s;
 }
 
 /* La pagina en la que estoy parado se marca con el color de acento.
@@ -194,6 +161,7 @@ a:hover {
     border: none;
     border-radius: 0.5rem;
     overflow: hidden;                 /* recorta la imagen a las esquinas redondeadas */
+    box-shadow: 0 2px 8px rgba(16, 51, 63, 0.10);
     transition: transform 0.25s, box-shadow 0.25s;
 }
 
@@ -219,7 +187,6 @@ a:hover {
     background-color: var(--terracota);
     color: #ffffff;
     font-weight: 600;
-    letter-spacing: 0.3px;
 }
 
 /* Fecha de la actividad: texto chico y en mayusculas para diferenciarlo
@@ -227,7 +194,6 @@ a:hover {
 .fecha-actividad {
     font-size: 0.875rem;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
     color: var(--azul-medio);
     font-weight: 600;
 }
@@ -256,38 +222,9 @@ a:hover {
     color: #ffffff;
 }
 
-/* Variante de contorno, para usar sobre fondos oscuros (la portada) */
-.btn-puerto-outline {
-    background-color: transparent;
-    border: 2px solid #ffffff;
-    color: #ffffff;
-    font-weight: 600;
-    padding: 0.6rem 1.75rem;
-}
-
-.btn-puerto-outline:hover,
-.btn-puerto-outline:focus {
-    background-color: #ffffff;
-    color: var(--azul-puerto);
-}
-
 
 /* --------------------------------------------------------------------------
-   7. FRANJA DE LLAMADA A LA ACCION
-   -------------------------------------------------------------------------- */
-
-.franja-cta {
-    background-color: var(--azul-medio);
-    color: #ffffff;
-}
-
-.franja-cta h2 {
-    color: #ffffff;
-}
-
-
-/* --------------------------------------------------------------------------
-   8. FORMULARIO DE INSCRIPCION
+   7. FORMULARIO DE INSCRIPCION
    -------------------------------------------------------------------------- */
 
 .caja-formulario {
@@ -328,17 +265,9 @@ a:hover {
     box-shadow: 0 0 0 0.2rem rgba(29, 96, 118, 0.20);
 }
 
-/* Marca visual de campo obligatorio: un asterisco despues de la etiqueta.
-   El atributo required del HTML es lo que realmente valida; esto es solo
-   la pista visual para la persona que completa el formulario. */
-.obligatorio::after {
-    content: " *";
-    color: var(--terracota);
-}
-
 
 /* --------------------------------------------------------------------------
-   9. PIE DE PAGINA
+   8. PIE DE PAGINA
    -------------------------------------------------------------------------- */
 
 .pie-pagina {
@@ -349,22 +278,19 @@ a:hover {
 .pie-pagina h2,
 .pie-pagina h3 {
     color: #ffffff;
-    font-size: 1.1rem;
 }
 
 .pie-pagina a {
     color: #d7e2e6;
-    text-decoration: none;
 }
 
 .pie-pagina a:hover {
-    color: var(--terracota);
-    text-decoration: underline;
+    color: var(--terracota-claro);
 }
 
 
 /* --------------------------------------------------------------------------
-   10. AJUSTES RESPONSIVOS PROPIOS
+   9. AJUSTES RESPONSIVOS PROPIOS
    --------------------------------------------------------------------------
    Bootstrap ya resuelve la mayor parte de la responsividad con su grilla y
    sus breakpoints. Estas media queries son ajustes puntuales MIOS, para los
@@ -382,13 +308,6 @@ a:hover {
     .portada {
         padding-top: 3.5rem;
         padding-bottom: 3.5rem;
-        text-align: center;
-    }
-
-    /* Con el texto centrado, la caja limitada a 60ch debe centrarse tambien */
-    .portada .lead {
-        margin-left: auto;
-        margin-right: auto;
     }
 
     /* Menos aire entre secciones para no alargar tanto la pagina */
@@ -423,7 +342,6 @@ a:hover {
        tactiles, donde no existe el estado hover. Lo desactivo. */
     .card-actividad:hover {
         transform: none;
-        box-shadow: none;
     }
 
     /* Imagenes de tarjeta un poco mas bajas: en una sola columna la foto

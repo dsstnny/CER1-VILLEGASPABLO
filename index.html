@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<!-- El atributo lang="es" declara el idioma del documento. Los lectores de
-     pantalla lo usan para elegir la pronunciacion correcta. -->
+<!-- lang="es" declara el idioma del documento. Los lectores de pantalla lo
+     usan para elegir la pronunciacion correcta. -->
 <html lang="es">
 
 <head>
@@ -9,7 +9,6 @@
          del celular que use el ancho real del dispositivo en lugar de simular
          una pantalla de escritorio. Sin ella, Bootstrap no responde bien. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Centro Cultural Puerto Abierto: talleres, exposiciones y presentaciones abiertas a la comunidad de Valparaiso.">
 
     <!-- ORDEN IMPORTANTE: primero Bootstrap y despues mi hoja de estilos.
          Asi mis reglas pueden sobrescribir a las del framework. -->
@@ -40,15 +39,11 @@
         <nav class="navbar navbar-expand-lg navbar-puerto" data-bs-theme="dark">
             <div class="container">
 
-                <!-- Nombre del centro cultural. Enlaza al inicio. -->
                 <a class="navbar-brand" href="index.html">Centro Cultural Puerto Abierto</a>
 
                 <!-- Boton hamburguesa: solo se ve cuando el menu esta colapsado.
-                     data-bs-toggle="collapse" y data-bs-target="#menuPrincipal"
-                     son los atributos que usa el JavaScript de Bootstrap para
-                     saber que debe abrir y cerrar el div con ese id.
-                     aria-controls / aria-expanded / aria-label son atributos de
-                     accesibilidad: describen el boton para lectores de pantalla. -->
+                     data-bs-toggle y data-bs-target son los atributos que usa el
+                     JavaScript de Bootstrap para saber que div abrir y cerrar. -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
                     aria-expanded="false" aria-label="Abrir o cerrar el menu de navegacion">
@@ -57,8 +52,7 @@
 
                 <!-- El id de este div es el que apunta el boton de arriba -->
                 <div class="collapse navbar-collapse" id="menuPrincipal">
-                    <!-- ms-auto = margin-start automatico: empuja el menu hacia
-                         la derecha en pantallas grandes.
+                    <!-- ms-auto empuja el menu hacia la derecha en pantallas grandes.
                          Uso <ul>/<li> porque el menu ES una lista de enlaces. -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
@@ -89,17 +83,16 @@
     <main>
 
         <!-- ==============================================================
-             SECCION 1: BIENVENIDA DESTACADA (portada)
+             SECCION 1: BIENVENIDA DESTACADA
              Es la seccion "visualmente destacada" que pide el enunciado.
              El fondo (foto + degradado oscuro) se define en estilos.css.
              ============================================================== -->
         <section class="portada">
             <div class="container">
                 <div class="row">
-                    <!-- col-12    -> en celular ocupa las 12 columnas (todo el ancho)
-                         col-lg-8  -> desde 992px ocupa 8 de 12, dejando aire a
-                                      la derecha para que el texto no quede
-                                      demasiado ancho y siga siendo legible. -->
+                    <!-- col-12   -> en celular ocupa las 12 columnas (todo el ancho)
+                         col-lg-8 -> desde 992px ocupa 8 de 12, para que el texto
+                                     no quede tan ancho y siga siendo legible. -->
                     <div class="col-12 col-lg-8">
                         <!-- Unico h1 de la pagina: es el titulo mas importante -->
                         <h1 class="display-5 mb-3">Un puerto abierto a la cultura</h1>
@@ -108,10 +101,10 @@
                             Programamos talleres, exposiciones y presentaciones para que
                             cualquier vecina o vecino pueda crear, aprender y participar.
                         </p>
-                        <!-- LLAMADA A LA ACCION principal hacia la cartelera.
+                        <!-- LLAMADA A LA ACCION hacia la cartelera.
                              Es un <a> con apariencia de boton: navega a otra
                              pagina, por eso NO uso <button>. -->
-                        <a href="cartelera.html" class="btn btn-puerto-outline btn-lg">
+                        <a href="cartelera.html" class="btn btn-puerto btn-lg">
                             Ver cartelera de actividades
                         </a>
                     </div>
@@ -130,7 +123,7 @@
                     <!-- Columna de texto: ancho completo en celular, la mitad
                          desde el breakpoint md (768px) hacia arriba. -->
                     <div class="col-12 col-md-6">
-                        <h2 class="titulo-seccion">Quienes somos</h2>
+                        <h2>Quienes somos</h2>
                         <p>
                             El <strong>Centro Cultural Puerto Abierto</strong> es una
                             organizacion sin fines de lucro dedicada a promover
@@ -145,15 +138,6 @@
                             depender de las redes sociales no signifique perderse
                             ninguna actividad.
                         </p>
-
-                        <!-- Lista de propositos. Uso <ul> porque es un conjunto
-                             de elementos sin orden jerarquico entre si.
-                             list-unstyled quita las vinetas por defecto. -->
-                        <ul class="list-unstyled">
-                            <li class="mb-2">&#9679; Actividades gratuitas o a precio comunitario</li>
-                            <li class="mb-2">&#9679; Talleres para todas las edades</li>
-                            <li class="mb-2">&#9679; Espacio abierto a artistas del territorio</li>
-                        </ul>
                     </div>
 
                     <!-- Columna de imagen.
@@ -162,7 +146,7 @@
                          desborde de su columna y se achique junto con ella. -->
                     <div class="col-12 col-md-6">
                         <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&h=600&fit=crop"
-                            class="img-fluid rounded shadow-sm"
+                            class="img-fluid rounded"
                             alt="Publico reunido al aire libre en una actividad del centro cultural">
                     </div>
 
@@ -173,17 +157,16 @@
 
         <!-- ==============================================================
              SECCION 3: ACTIVIDADES DESTACADAS
-             Muestra una seleccion de 3 actividades. La cartelera completa
-             esta en cartelera.html.
+             Muestra 3 actividades. La cartelera completa esta en cartelera.html.
              ============================================================== -->
         <section class="seccion bg-white" id="destacadas">
             <div class="container">
-                <h2 class="titulo-seccion">Actividades destacadas</h2>
+                <h2 class="mb-4">Actividades destacadas</h2>
 
                 <!-- SISTEMA DE GRILLA DE BOOTSTRAP:
-                     row-cols-1     -> 1 tarjeta por fila en celular
-                     row-cols-md-3  -> 3 tarjetas por fila desde 768px
-                     g-4            -> "gutter" (separacion) entre columnas y filas
+                     row-cols-1    -> 1 tarjeta por fila en celular
+                     row-cols-md-3 -> 3 tarjetas por fila desde 768px
+                     g-4           -> "gutter": separacion entre columnas y filas
                      Con row-cols no necesito poner col-* en cada hijo: la fila
                      reparte el ancho sola. -->
                 <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -192,7 +175,7 @@
                     <div class="col">
                         <!-- h-100 hace que todas las tarjetas de la fila tengan
                              la misma altura aunque su texto sea mas corto -->
-                        <article class="card card-actividad h-100 shadow-sm">
+                        <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop"
                                 class="card-img-top"
                                 alt="Publico frente a un escenario iluminado durante un concierto">
@@ -216,7 +199,7 @@
 
                     <!-- TARJETA 2 -->
                     <div class="col">
-                        <article class="card card-actividad h-100 shadow-sm">
+                        <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop"
                                 class="card-img-top"
                                 alt="Siluetas de tres actores recortadas sobre un telon rojo">
@@ -236,7 +219,7 @@
 
                     <!-- TARJETA 3 -->
                     <div class="col">
-                        <article class="card card-actividad h-100 shadow-sm">
+                        <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&h=400&fit=crop"
                                 class="card-img-top"
                                 alt="Mural callejero con el rostro de una persona pintado en colores">
@@ -255,106 +238,48 @@
                     </div>
 
                 </div>
+
+                <!-- Segundo acceso a la cartelera, para quien ya bajo hasta aca -->
+                <p class="mt-4 mb-0">
+                    <a href="cartelera.html" class="btn btn-puerto">Ver las 6 actividades</a>
+                </p>
             </div>
         </section>
 
 
         <!-- ==============================================================
-             SECCION 4: SEGUNDA LLAMADA A LA ACCION
-             Franja de color que corta visualmente la pagina y repite el
-             acceso a la cartelera para quien ya bajo hasta aca.
-             ============================================================== -->
-        <section class="franja-cta py-5">
-            <div class="container">
-                <!-- align-items-center centra verticalmente las dos columnas
-                     entre si; text-md-end alinea el boton a la derecha solo
-                     desde 768px (en celular queda a la izquierda, debajo). -->
-                <div class="row align-items-center g-3">
-                    <div class="col-12 col-md-8">
-                        <h2 class="h3 mb-1">Hay 9 actividades en cartelera</h2>
-                        <p class="mb-0">Revisa la cartelera completa e inscribete en linea.</p>
-                    </div>
-                    <div class="col-12 col-md-4 text-md-end">
-                        <a href="cartelera.html" class="btn btn-puerto">Ir a la cartelera</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-
-        <!-- ==============================================================
-             SECCION 5: CONTACTO Y UBICACION
+             SECCION 4: CONTACTO Y UBICACION
              ============================================================== -->
         <section class="seccion" id="contacto">
             <div class="container">
-                <h2 class="titulo-seccion">Donde estamos</h2>
+                <h2 class="mb-4">Donde estamos</h2>
 
                 <div class="row g-4">
 
-                    <!-- Datos de contacto -->
                     <div class="col-12 col-md-6">
-                        <h3 class="h5">Direccion</h3>
+                        <h3 class="h5">Direccion y contacto</h3>
                         <!-- <address> es el elemento semantico para los datos de
                              contacto. El navegador lo muestra en cursiva por
                              defecto, por eso le pongo fst-normal (font-style
                              normal), una utilidad de Bootstrap. -->
                         <address class="fst-normal">
                             Calle Serrano 145, Barrio Puerto<br>
-                            Valparaiso, Region de Valparaiso, Chile
-                        </address>
-
-                        <h3 class="h5 mt-4">Contacto</h3>
-                        <p class="mb-1">
-                            Telefono:
+                            Valparaiso, Chile<br>
                             <!-- href="tel:" permite llamar directo desde el celular -->
-                            <a href="tel:+56322456789">+56 32 245 6789</a>
-                        </p>
-                        <p>
-                            Correo:
+                            Telefono: <a href="tel:+56322456789">+56 32 245 6789</a><br>
                             <!-- href="mailto:" abre el cliente de correo -->
-                            <a href="mailto:contacto@puertoabierto.cl">contacto@puertoabierto.cl</a>
-                        </p>
+                            Correo: <a href="mailto:contacto@puertoabierto.cl">contacto@puertoabierto.cl</a>
+                        </address>
                     </div>
 
-                    <!-- Horarios de atencion.
-                         Uso una <table> porque los horarios SON datos tabulares:
-                         relacionan un dia con un rango de horas. -->
                     <div class="col-12 col-md-6">
                         <h3 class="h5">Horario de atencion</h3>
-                        <!-- table-responsive permite desplazar la tabla en
-                             horizontal si no cabe, en vez de romper el layout -->
-                        <div class="table-responsive">
-                            <table class="table table-sm align-middle">
-                                <!-- <caption> describe la tabla para lectores de
-                                     pantalla. visually-hidden la oculta a la
-                                     vista pero la mantiene accesible. -->
-                                <caption class="visually-hidden">
-                                    Horario de atencion del centro cultural por dia
-                                </caption>
-                                <thead>
-                                    <tr>
-                                        <!-- scope="col" indica que estos encabezados
-                                             encabezan columnas -->
-                                        <th scope="col">Dia</th>
-                                        <th scope="col">Horario</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <th scope="row">Lunes a viernes</th>
-                                        <td>10:00 - 20:00</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Sabado</th>
-                                        <td>11:00 - 21:00</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Domingo</th>
-                                        <td>11:00 - 17:00</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+                        <!-- list-unstyled quita las vinetas por defecto de la lista -->
+                        <ul class="list-unstyled">
+                            <li>Lunes a viernes: 10:00 a 20:00</li>
+                            <li>Sabado: 11:00 a 21:00</li>
+                            <li>Domingo: 11:00 a 17:00</li>
+                        </ul>
                     </div>
 
                 </div>
@@ -391,12 +316,8 @@
 
             </div>
 
-            <!-- <hr> separa visualmente el bloque de creditos.
-                 border-light y opacity son utilidades de Bootstrap. -->
-            <hr class="border-light opacity-25 my-3">
-
-            <p class="mb-0 text-center small">
-                Sitio desarrollado por Pablo Villegas &mdash; Certamen 1, EIN082B Taller de Lenguaje de Programacion.
+            <p class="mb-0 mt-3 text-center small">
+                Sitio desarrollado por Pablo Villegas &mdash; Certamen 1, EIN082B.
             </p>
         </div>
     </footer>
@@ -406,8 +327,7 @@
          Va al final del <body> para que el navegador dibuje primero el
          contenido y recien despues descargue el script.
          Uso el archivo LOCAL (y no el CDN) para que el menu hamburguesa
-         funcione aunque el dia de la presentacion no haya internet.
-         El "bundle" ya incluye Popper, por eso basta con un solo archivo. -->
+         funcione aunque el dia de la presentacion no haya internet. -->
     <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
