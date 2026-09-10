@@ -19,7 +19,7 @@ instalación: es un sitio estático de HTML, CSS y Bootstrap.
 ```
 CER1-VILLEGASPABLO/
 ├── index.html          Página principal
-├── cartelera.html      Cartelera de actividades (9 actividades)
+├── cartelera.html      Cartelera de actividades (6 actividades)
 ├── inscripcion.html    Formulario de inscripción
 ├── css/
 │   ├── bootstrap.css   Framework CSS (Bootstrap 5.3.8, sin modificar)
@@ -47,10 +47,10 @@ sitio funcione completo aunque no haya conexión a internet.
 - Descripción de la organización ("Quiénes somos").
 - Selección de 3 actividades destacadas.
 - Segunda llamada a la acción hacia la cartelera.
-- Información de contacto y ubicación, con horarios en una tabla.
+- Información de contacto y ubicación, con los horarios de atención en una lista.
 
 ### 2. `cartelera.html` — Cartelera de actividades
-- 9 actividades presentadas con el sistema de grilla de Bootstrap.
+- 6 actividades presentadas con el sistema de grilla de Bootstrap.
 - Cada actividad incluye imagen, nombre, categoría, fecha y descripción breve.
 - Distribución responsiva: 1 columna en celular, 2 en tablet, 3 en escritorio.
 
@@ -61,11 +61,14 @@ Formulario con los controles apropiados para cada tipo de dato:
 |---|---|---|
 | Nombre completo | `input type="text"` | Sí |
 | Correo electrónico | `input type="email"` | Sí |
-| Teléfono | `input type="tel"` con `pattern` | Sí |
-| Actividad de interés | `select` con `optgroup` | Sí |
+| Teléfono | `input type="tel"` | Sí |
 | Edad | `input type="number"` con `min`/`max` | Sí |
+| Actividad de interés | `select` con las 6 actividades | Sí |
 | Comentarios adicionales | `textarea` | No |
 | Aceptación de condiciones | `input type="checkbox"` | Sí |
+
+Los campos están agrupados en tres `fieldset` con su `legend`: datos de la
+persona, actividad de interés y condiciones de participación.
 
 La obligatoriedad se implementa con el atributo `required` de HTML, sin JavaScript.
 
@@ -77,8 +80,11 @@ Definida como variables CSS en `:root` dentro de `css/estilos.css`:
 |---|---|---|
 | `--azul-puerto` | `#10333f` | Barra de navegación, pie de página, títulos |
 | `--azul-medio` | `#1d6076` | Enlaces y detalles |
-| `--terracota` | `#c25a3c` | Botones y llamadas a la acción |
+| `--terracota` | `#b45034` | Botones y badges, con texto blanco encima |
+| `--terracota-oscuro` | `#9e4426` | Estado `hover` de los botones |
+| `--terracota-claro` | `#e08a6a` | Acento sobre fondos oscuros (barra de navegación) |
 | `--arena` | `#f5f0e8` | Fondo general |
+| `--gris-texto` | `#33393d` | Color del texto |
 
 ## Responsividad
 
