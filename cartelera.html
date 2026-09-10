@@ -13,12 +13,6 @@
 
 <body>
 
-    <!-- ==================================================================
-         ENCABEZADO Y NAVEGACION
-         Identico al de index.html, para mantener la navegacion consistente
-         en todo el sitio. Lo unico que cambia es cual enlace lleva la clase
-         "active": aca es Cartelera.
-         ================================================================== -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-puerto" data-bs-theme="dark">
             <div class="container">
@@ -49,13 +43,8 @@
         </nav>
     </header>
 
-
     <main>
 
-        <!-- ==============================================================
-             ENCABEZADO DE LA PAGINA
-             Franja de color con el titulo. bg-puerto es una clase mia.
-             ============================================================== -->
         <section class="bg-puerto text-white py-5">
             <div class="container">
                 <h1 class="text-white mb-2">Cartelera de actividades</h1>
@@ -65,25 +54,6 @@
             </div>
         </section>
 
-
-        <!-- ==============================================================
-             GALERIA DE ACTIVIDADES
-             ==============================================================
-             ESTRUCTURA DE LA GRILLA (lo que pide el enunciado):
-
-             .container  -> caja centrada con ancho maximo segun el breakpoint
-               .row      -> fila. Crea el contexto flex y los "gutters"
-                 .col    -> columna. Cada tarjeta va dentro de una.
-
-             Clases responsivas de la fila:
-               row-cols-1     -> 1 columna  (celular,  menos de 768px)
-               row-cols-md-2  -> 2 columnas (tablet,   desde 768px)
-               row-cols-lg-3  -> 3 columnas (escritorio, desde 992px)
-               g-4            -> separacion entre tarjetas
-
-             Asi la distribucion se adapta sola al tamano de pantalla, sin que
-             yo tenga que escribir media queries para esto.
-             ============================================================== -->
         <section class="seccion">
             <div class="container">
 
@@ -91,29 +61,17 @@
 
                 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
 
-                    <!-- ===================== ACTIVIDAD 1 ===================== -->
                     <div class="col">
-                        <!-- Uso <article> en vez de <div> porque cada tarjeta es
-                             una pieza de contenido independiente y con sentido
-                             propio: se entiende igual fuera de la lista.
-                             h-100 -> todas las tarjetas de la fila miden lo mismo. -->
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop"
                                 class="card-img-top"
                                 alt="Publico con las manos en alto frente a un escenario lleno de luces">
                             <div class="card-body">
-                                <!-- CATEGORIA: componente badge de Bootstrap con
-                                     mi color de acento (.badge-categoria) -->
                                 <span class="badge badge-categoria mb-2">Musica</span>
-                                <!-- NOMBRE: h3 porque depende del h2 de la seccion.
-                                     La clase h5 le da el TAMANO de un h5 sin
-                                     romper la jerarquia semantica. -->
                                 <h3 class="card-title h5">Ciclo de Musica en Vivo</h3>
-                                <!-- FECHA -->
                                 <p class="fecha-actividad mb-2">
                                     <time datetime="2026-09-25">Viernes 25 de septiembre</time>
                                 </p>
-                                <!-- DESCRIPCION BREVE -->
                                 <p class="card-text">
                                     Cuatro bandas emergentes del puerto se presentan en el
                                     patio central. Entrada liberada hasta completar aforo.
@@ -122,7 +80,6 @@
                         </article>
                     </div>
 
-                    <!-- ===================== ACTIVIDAD 2 ===================== -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop"
@@ -142,7 +99,6 @@
                         </article>
                     </div>
 
-                    <!-- ===================== ACTIVIDAD 3 ===================== -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&h=400&fit=crop"
@@ -162,7 +118,6 @@
                         </article>
                     </div>
 
-                    <!-- ===================== ACTIVIDAD 4 ===================== -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=600&h=400&fit=crop"
@@ -182,7 +137,6 @@
                         </article>
                     </div>
 
-                    <!-- ===================== ACTIVIDAD 5 ===================== -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=600&h=400&fit=crop"
@@ -202,7 +156,6 @@
                         </article>
                     </div>
 
-                    <!-- ===================== ACTIVIDAD 6 ===================== -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=600&h=400&fit=crop"
@@ -233,10 +186,6 @@
 
     </main>
 
-
-    <!-- ==================================================================
-         PIE DE PAGINA (identico en las tres paginas)
-         ================================================================== -->
     <footer class="pie-pagina py-4">
         <div class="container">
             <div class="row g-4">

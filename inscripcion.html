@@ -13,11 +13,6 @@
 
 <body>
 
-    <!-- ==================================================================
-         ENCABEZADO Y NAVEGACION
-         Mismo bloque que en las otras dos paginas. Aca el enlace marcado
-         como "active" es Inscripcion.
-         ================================================================== -->
     <header>
         <nav class="navbar navbar-expand-lg navbar-puerto" data-bs-theme="dark">
             <div class="container">
@@ -48,12 +43,8 @@
         </nav>
     </header>
 
-
     <main>
 
-        <!-- ==============================================================
-             ENCABEZADO DE LA PAGINA
-             ============================================================== -->
         <section class="bg-puerto text-white py-5">
             <div class="container">
                 <h1 class="text-white mb-2">Inscripcion a actividades</h1>
@@ -63,106 +54,54 @@
             </div>
         </section>
 
-
-        <!-- ==============================================================
-             FORMULARIO
-             ============================================================== -->
         <section class="seccion">
             <div class="container">
                 <div class="row justify-content-center">
 
-                    <!-- La columna se angosta a medida que crece la pantalla:
-                         12 de 12 en celular y 8 de 12 desde 992px.
-                         justify-content-center la deja centrada en la fila.
-                         Un formulario muy ancho es incomodo de completar. -->
                     <div class="col-12 col-lg-8">
 
                         <div class="caja-formulario">
 
-                            <!-- SOBRE action Y method:
-                                 este certamen es solo Front End, todavia no hay
-                                 un servidor que reciba los datos. Dejo action="#"
-                                 como marcador. Cuando exista el Back End, aca
-                                 iria la URL que procesa la inscripcion.
-                                 method="post" es lo correcto para un envio que
-                                 crea un registro: manda los datos en el cuerpo
-                                 de la peticion y no en la barra de direcciones. -->
                             <form action="#" method="post">
 
-                                <!-- ==============================================
-                                     GRUPO 1: DATOS DE LA PERSONA
-                                     <fieldset> agrupa campos relacionados y
-                                     <legend> es el titulo de ese grupo. El lector
-                                     de pantalla anuncia la leyenda antes de cada
-                                     campo del grupo.
-                                     ============================================== -->
                                 <fieldset>
                                     <legend>Datos de la persona</legend>
 
-                                    <!-- NOMBRE COMPLETO -->
                                     <div class="mb-3">
-                                        <!-- El atributo for del <label> debe coincidir
-                                             EXACTAMENTE con el id del campo. Asi, al
-                                             hacer clic en la etiqueta se activa el
-                                             campo, y el lector de pantalla sabe que
-                                             etiqueta corresponde a que control. -->
                                         <label for="nombre" class="form-label">
                                             Nombre completo <span class="text-danger">*</span>
                                         </label>
-                                        <!-- type="text" -> texto libre de una linea
-                                             required    -> el navegador NO deja enviar
-                                                            el formulario si esta vacio -->
                                         <input type="text" class="form-control" id="nombre" name="nombre" required>
                                     </div>
 
-                                    <!-- CORREO ELECTRONICO -->
                                     <div class="mb-3">
                                         <label for="correo" class="form-label">
                                             Correo electronico <span class="text-danger">*</span>
                                         </label>
-                                        <!-- type="email": el navegador valida solo que
-                                             el texto tenga forma de correo, y en el
-                                             celular muestra un teclado con la arroba. -->
                                         <input type="email" class="form-control" id="correo" name="correo"
                                             required aria-describedby="ayudaCorreo">
-                                        <!-- aria-describedby enlaza este texto de ayuda
-                                             con el campo de arriba, para que el lector
-                                             de pantalla tambien lo lea. -->
                                         <div id="ayudaCorreo" class="form-text">
                                             Enviaremos la confirmacion del cupo a esta direccion.
                                         </div>
                                     </div>
 
-                                    <!-- TELEFONO -->
                                     <div class="mb-3">
                                         <label for="telefono" class="form-label">
                                             Telefono <span class="text-danger">*</span>
                                         </label>
-                                        <!-- type="tel": abre el teclado numerico en el
-                                             celular. No valida formato por si solo,
-                                             porque los telefonos varian por pais. -->
                                         <input type="tel" class="form-control" id="telefono" name="telefono" required>
                                     </div>
 
-                                    <!-- EDAD -->
                                     <div class="mb-3">
                                         <label for="edad" class="form-label">
                                             Edad <span class="text-danger">*</span>
                                         </label>
-                                        <!-- type="number" con min y max: el navegador
-                                             rechaza valores fuera del rango. Es el
-                                             control adecuado porque la edad es un dato
-                                             numerico, no texto. -->
                                         <input type="number" class="form-control" id="edad" name="edad"
                                             required min="5" max="110">
                                     </div>
 
                                 </fieldset>
 
-
-                                <!-- ==============================================
-                                     GRUPO 2: ACTIVIDAD ELEGIDA
-                                     ============================================== -->
                                 <fieldset>
                                     <legend>Actividad de interes</legend>
 
@@ -170,18 +109,7 @@
                                         <label for="actividad" class="form-label">
                                             Selecciona una actividad <span class="text-danger">*</span>
                                         </label>
-                                        <!-- <select> es el control adecuado cuando hay
-                                             que elegir UNA opcion de una lista cerrada
-                                             y conocida. Escribirla a mano en un input
-                                             permitiria errores de tipeo.
-                                             form-select es la clase de Bootstrap. -->
                                         <select class="form-select" id="actividad" name="actividad" required>
-                                            <!-- Esta primera opcion actua como texto guia.
-                                                 value="" (vacio) + disabled + selected
-                                                 hace que aparezca al abrir la pagina pero
-                                                 que NO cuente como respuesta valida:
-                                                 combinada con required, obliga a elegir
-                                                 alguna de las opciones reales. -->
                                             <option value="" disabled selected>Elige una actividad de la cartelera</option>
                                             <option value="musica-en-vivo">Ciclo de Musica en Vivo</option>
                                             <option value="teatro-voces-del-puerto">Temporada de Teatro: Voces del Puerto</option>
@@ -192,24 +120,14 @@
                                         </select>
                                     </div>
 
-                                    <!-- COMENTARIOS ADICIONALES -->
                                     <div class="mb-3">
-                                        <!-- Sin asterisco y sin required: este campo es
-                                             OPCIONAL segun el enunciado. -->
                                         <label for="comentarios" class="form-label">Comentarios adicionales</label>
-                                        <!-- <textarea> en lugar de <input type="text">
-                                             porque se espera un texto de varias lineas.
-                                             rows define el alto visible inicial. -->
                                         <textarea class="form-control" id="comentarios" name="comentarios"
                                             rows="4"></textarea>
                                     </div>
 
                                 </fieldset>
 
-
-                                <!-- ==============================================
-                                     GRUPO 3: CONDICIONES DE PARTICIPACION
-                                     ============================================== -->
                                 <fieldset>
                                     <legend>Condiciones de participacion</legend>
 
@@ -219,12 +137,7 @@
                                         ser reasignado a otra persona.
                                     </p>
 
-                                    <!-- form-check es el patron de Bootstrap para casillas:
-                                         alinea la casilla con su etiqueta. -->
                                     <div class="form-check mb-3">
-                                        <!-- type="checkbox" es el control adecuado para una
-                                             aceptacion de si/no. required en un checkbox
-                                             suelto obliga a marcarlo para poder enviar. -->
                                         <input class="form-check-input" type="checkbox"
                                             id="condiciones" name="condiciones" value="aceptado" required>
                                         <label class="form-check-label" for="condiciones">
@@ -235,11 +148,6 @@
 
                                 </fieldset>
 
-
-                                <!-- BOTON DE ENVIO
-                                     type="submit" dispara la validacion de HTML: si falta
-                                     algun campo required, el navegador muestra el mensaje
-                                     y no envia nada. -->
                                 <button type="submit" class="btn btn-puerto">Enviar inscripcion</button>
 
                                 <p class="form-text mt-3 mb-0">
@@ -260,10 +168,6 @@
 
     </main>
 
-
-    <!-- ==================================================================
-         PIE DE PAGINA (identico en las tres paginas)
-         ================================================================== -->
     <footer class="pie-pagina py-4">
         <div class="container">
             <div class="row g-4">

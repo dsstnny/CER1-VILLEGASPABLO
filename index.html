@@ -1,17 +1,10 @@
 <!DOCTYPE html>
-<!-- lang="es" declara el idioma del documento. Los lectores de pantalla lo
-     usan para elegir la pronunciacion correcta. -->
 <html lang="es">
 
 <head>
     <meta charset="UTF-8">
-    <!-- Esta etiqueta es la BASE del diseno responsivo: le dice al navegador
-         del celular que use el ancho real del dispositivo en lugar de simular
-         una pantalla de escritorio. Sin ella, Bootstrap no responde bien. -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- ORDEN IMPORTANTE: primero Bootstrap y despues mi hoja de estilos.
-         Asi mis reglas pueden sobrescribir a las del framework. -->
     <link rel="stylesheet" href="css/bootstrap.css">
     <link rel="stylesheet" href="css/estilos.css">
 
@@ -20,45 +13,21 @@
 
 <body>
 
-    <!-- ==================================================================
-         ENCABEZADO Y NAVEGACION
-         El <header> es el encabezado del sitio y contiene el <nav>, que es
-         el elemento semantico para un bloque de enlaces de navegacion.
-         Este mismo bloque se repite identico en las tres paginas.
-         ================================================================== -->
     <header>
-        <!-- navbar            -> componente de navegacion de Bootstrap
-             navbar-expand-lg  -> el menu se muestra completo desde el breakpoint
-                                  lg (992px). Por debajo se COLAPSA en el boton
-                                  hamburguesa. Ese es el comportamiento
-                                  responsivo que pide el enunciado.
-             navbar-puerto     -> clase MIA, solo para el color de fondo.
-             data-bs-theme     -> le indica a Bootstrap 5.3 que este bloque va
-                                  sobre fondo oscuro, para que el texto y el
-                                  icono del boton se dibujen en claro. -->
         <nav class="navbar navbar-expand-lg navbar-puerto" data-bs-theme="dark">
             <div class="container">
 
                 <a class="navbar-brand" href="index.html">Centro Cultural Puerto Abierto</a>
 
-                <!-- Boton hamburguesa: solo se ve cuando el menu esta colapsado.
-                     data-bs-toggle y data-bs-target son los atributos que usa el
-                     JavaScript de Bootstrap para saber que div abrir y cerrar. -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#menuPrincipal" aria-controls="menuPrincipal"
                     aria-expanded="false" aria-label="Abrir o cerrar el menu de navegacion">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <!-- El id de este div es el que apunta el boton de arriba -->
                 <div class="collapse navbar-collapse" id="menuPrincipal">
-                    <!-- ms-auto empuja el menu hacia la derecha en pantallas grandes.
-                         Uso <ul>/<li> porque el menu ES una lista de enlaces. -->
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
-                            <!-- active + aria-current marcan la pagina actual:
-                                 uno lo ve el usuario, el otro lo anuncia el
-                                 lector de pantalla. -->
                             <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
                         </li>
                         <li class="nav-item">
@@ -74,36 +43,18 @@
         </nav>
     </header>
 
-
-    <!-- ==================================================================
-         CONTENIDO PRINCIPAL
-         <main> marca el contenido central y unico de la pagina. Va una sola
-         vez por documento y NO incluye el header ni el footer.
-         ================================================================== -->
     <main>
 
-        <!-- ==============================================================
-             SECCION 1: BIENVENIDA DESTACADA
-             Es la seccion "visualmente destacada" que pide el enunciado.
-             El fondo (foto + degradado oscuro) se define en estilos.css.
-             ============================================================== -->
         <section class="portada">
             <div class="container">
                 <div class="row">
-                    <!-- col-12   -> en celular ocupa las 12 columnas (todo el ancho)
-                         col-lg-8 -> desde 992px ocupa 8 de 12, para que el texto
-                                     no quede tan ancho y siga siendo legible. -->
                     <div class="col-12 col-lg-8">
-                        <!-- Unico h1 de la pagina: es el titulo mas importante -->
                         <h1 class="display-5 mb-3">Un puerto abierto a la cultura</h1>
                         <p class="lead mb-4">
                             Somos un espacio de encuentro en el Barrio Puerto de Valparaiso.
                             Programamos talleres, exposiciones y presentaciones para que
                             cualquier vecina o vecino pueda crear, aprender y participar.
                         </p>
-                        <!-- LLAMADA A LA ACCION hacia la cartelera.
-                             Es un <a> con apariencia de boton: navega a otra
-                             pagina, por eso NO uso <button>. -->
                         <a href="cartelera.html" class="btn btn-puerto btn-lg">
                             Ver cartelera de actividades
                         </a>
@@ -112,16 +63,10 @@
             </div>
         </section>
 
-
-        <!-- ==============================================================
-             SECCION 2: QUIENES SOMOS (descripcion de la organizacion)
-             ============================================================== -->
         <section class="seccion" id="quienes-somos">
             <div class="container">
                 <div class="row align-items-center g-4">
 
-                    <!-- Columna de texto: ancho completo en celular, la mitad
-                         desde el breakpoint md (768px) hacia arriba. -->
                     <div class="col-12 col-md-6">
                         <h2>Quienes somos</h2>
                         <p>
@@ -140,10 +85,6 @@
                         </p>
                     </div>
 
-                    <!-- Columna de imagen.
-                         img-fluid es la clase de Bootstrap que hace la imagen
-                         responsiva: le aplica max-width:100% para que nunca se
-                         desborde de su columna y se achique junto con ella. -->
                     <div class="col-12 col-md-6">
                         <img src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&h=600&fit=crop"
                             class="img-fluid rounded"
@@ -154,27 +95,13 @@
             </div>
         </section>
 
-
-        <!-- ==============================================================
-             SECCION 3: ACTIVIDADES DESTACADAS
-             Muestra 3 actividades. La cartelera completa esta en cartelera.html.
-             ============================================================== -->
         <section class="seccion bg-white" id="destacadas">
             <div class="container">
                 <h2 class="mb-4">Actividades destacadas</h2>
 
-                <!-- SISTEMA DE GRILLA DE BOOTSTRAP:
-                     row-cols-1    -> 1 tarjeta por fila en celular
-                     row-cols-md-3 -> 3 tarjetas por fila desde 768px
-                     g-4           -> "gutter": separacion entre columnas y filas
-                     Con row-cols no necesito poner col-* en cada hijo: la fila
-                     reparte el ancho sola. -->
                 <div class="row row-cols-1 row-cols-md-3 g-4">
 
-                    <!-- TARJETA 1 -->
                     <div class="col">
-                        <!-- h-100 hace que todas las tarjetas de la fila tengan
-                             la misma altura aunque su texto sea mas corto -->
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?w=600&h=400&fit=crop"
                                 class="card-img-top"
@@ -182,10 +109,6 @@
                             <div class="card-body">
                                 <span class="badge badge-categoria mb-2">Musica</span>
                                 <h3 class="card-title h5">Ciclo de Musica en Vivo</h3>
-                                <!-- <time> es el elemento semantico para fechas.
-                                     El atributo datetime va en formato AAAA-MM-DD,
-                                     legible por maquinas; el texto visible queda
-                                     en el formato que lee una persona. -->
                                 <p class="fecha-actividad mb-2">
                                     <time datetime="2026-09-25">Viernes 25 de septiembre</time>
                                 </p>
@@ -197,7 +120,6 @@
                         </article>
                     </div>
 
-                    <!-- TARJETA 2 -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1503095396549-807759245b35?w=600&h=400&fit=crop"
@@ -217,7 +139,6 @@
                         </article>
                     </div>
 
-                    <!-- TARJETA 3 -->
                     <div class="col">
                         <article class="card card-actividad h-100">
                             <img src="https://images.unsplash.com/photo-1547891654-e66ed7ebb968?w=600&h=400&fit=crop"
@@ -239,17 +160,12 @@
 
                 </div>
 
-                <!-- Segundo acceso a la cartelera, para quien ya bajo hasta aca -->
                 <p class="mt-4 mb-0">
                     <a href="cartelera.html" class="btn btn-puerto">Ver las 6 actividades</a>
                 </p>
             </div>
         </section>
 
-
-        <!-- ==============================================================
-             SECCION 4: CONTACTO Y UBICACION
-             ============================================================== -->
         <section class="seccion" id="contacto">
             <div class="container">
                 <h2 class="mb-4">Donde estamos</h2>
@@ -258,23 +174,16 @@
 
                     <div class="col-12 col-md-6">
                         <h3 class="h5">Direccion y contacto</h3>
-                        <!-- <address> es el elemento semantico para los datos de
-                             contacto. El navegador lo muestra en cursiva por
-                             defecto, por eso le pongo fst-normal (font-style
-                             normal), una utilidad de Bootstrap. -->
                         <address class="fst-normal">
                             Calle Serrano 145, Barrio Puerto<br>
                             Valparaiso, Chile<br>
-                            <!-- href="tel:" permite llamar directo desde el celular -->
                             Telefono: <a href="tel:+56322456789">+56 32 245 6789</a><br>
-                            <!-- href="mailto:" abre el cliente de correo -->
                             Correo: <a href="mailto:contacto@puertoabierto.cl">contacto@puertoabierto.cl</a>
                         </address>
                     </div>
 
                     <div class="col-12 col-md-6">
                         <h3 class="h5">Horario de atencion</h3>
-                        <!-- list-unstyled quita las vinetas por defecto de la lista -->
                         <ul class="list-unstyled">
                             <li>Lunes a viernes: 10:00 a 20:00</li>
                             <li>Sabado: 11:00 a 21:00</li>
@@ -288,11 +197,6 @@
 
     </main>
 
-
-    <!-- ==================================================================
-         PIE DE PAGINA
-         Se repite igual en las tres paginas.
-         ================================================================== -->
     <footer class="pie-pagina py-4">
         <div class="container">
             <div class="row g-4">
@@ -322,12 +226,6 @@
         </div>
     </footer>
 
-
-    <!-- JAVASCRIPT DE BOOTSTRAP
-         Va al final del <body> para que el navegador dibuje primero el
-         contenido y recien despues descargue el script.
-         Uso el archivo LOCAL (y no el CDN) para que el menu hamburguesa
-         funcione aunque el dia de la presentacion no haya internet. -->
     <script src="js/bootstrap.bundle.min.js"></script>
 
 </body>
